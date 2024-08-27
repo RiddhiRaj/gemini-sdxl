@@ -67,6 +67,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Header that stays on all pages
+st.title("Welcome!")
+
 with st.sidebar:
     user_picked = option_menu(
         "AI Assistant",
@@ -88,7 +91,7 @@ if user_picked == 'ChatBot':
     if "chat_history" not in st.session_state:
         st.session_state['chat_history'] = model.start_chat(history=[])
 
-    st.title("🧑🏻‍💻Talk With Gemini")
+    st.header("🧑🏻‍💻Talk With Gemini")
 
     # Display the chat history
     for message in st.session_state.chat_history.history:
@@ -106,7 +109,7 @@ if user_picked == 'ChatBot':
 if user_picked == 'Image Captioning':
     model = gemini_vision()
 
-    st.title("✒️Image Captioning")
+    st.header("✒️Image Captioning")
 
     image = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
@@ -128,7 +131,7 @@ if user_picked == 'Image Captioning':
 elif user_picked == 'Text to Image':
     
 
-    st.title("🔮Text-to-Image Generation")
+    st.header("🔮Text-to-Image Generation")
 
     model_choice = st.selectbox("Choose Image Generator:", ["Stable Diffusion XL"])
 
