@@ -5,8 +5,6 @@ from streamlit_option_menu import option_menu  # Custom option menu for Streamli
 from PIL import Image  # Python Imaging Library to work with images 
 import google.generativeai as genai  # Google Generative AI library for building AI models
 
-import json
-import requests
 from octoai.util import to_file
 from octoai.client import OctoAI
 
@@ -74,7 +72,7 @@ with st.sidebar:
         "AI Assistant",
         ["ChatBot", "Image Captioning", "Text to Image"],
         menu_icon="robot",
-        icons=["chat-dots-fill", "image-fill", "brush-fill"],
+        icons=["chat-dots-fill", "brush-fill", "image-fill"],
         default_index=0
     )
 
@@ -108,7 +106,7 @@ if user_picked == 'ChatBot':
 if user_picked == 'Image Captioning':
     model = gemini_vision()
 
-    st.title("🖼️Image Captioning")
+    st.title("✒️Image Captioning")
 
     image = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
@@ -128,9 +126,11 @@ if user_picked == 'Image Captioning':
 
 
 elif user_picked == 'Text to Image':
-    model_choice = st.selectbox("Choose Image Generator:", ["Stable Diffusion XL"])
+    
 
-    st.title("🎨 Text-to-Image Generation")
+    st.title("🔮Text-to-Image Generation")
+
+    model_choice = st.selectbox("Choose Image Generator:", ["Stable Diffusion XL"])
 
     user_prompt = st.text_input("Enter the prompt for image generation:")
 
