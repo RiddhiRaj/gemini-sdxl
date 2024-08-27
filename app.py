@@ -20,19 +20,20 @@ def gemini_pro():
 
 # Load gemini vision model
 def gemini_vision():
-    model = genai.GenerativeModel('gemini-pro-vision')
+    model = genai.GenerativeModel('gemini-1.5-flash-latest')
     return model
 
+
 # get response from gemini pro vision model
-def gemini_visoin_response(model, prompt, image):
+def gemini_vision_response(model, prompt, image):
     response = model.generate_content([prompt, image])
     return response.text
 
 
 # Set page title and icon
 st.set_page_config(
-    page_title="Chat With Gemi",
-    page_icon="🧠",
+    page_title="AI Assistant",
+    page_icon="🧸",
     layout="centered",
     initial_sidebar_state="expanded"
 )
@@ -60,7 +61,7 @@ if user_picked == 'ChatBot':
     if "chat_history" not in st.session_state:
         st.session_state['chat_history'] = model.start_chat(history=[])
 
-    st.title("🤖TalkBot")
+    st.title("🧑🏻‍💻Talk With Gemini")
 
     #Display the chat history
     for message in st.session_state.chat_history.history:
@@ -93,7 +94,7 @@ if user_picked == 'Image Captioning':
         with colLeft:
             st.image(load_image.resize((800, 500)))
 
-        caption_response = gemini_visoin_response(model, user_prompt, load_image)
+        caption_response = gemini_vision_response(model, user_prompt, load_image)
 
         with colRight:
             st.info(caption_response)
