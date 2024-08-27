@@ -25,8 +25,8 @@ This project is a Streamlit-based web application that leverages Google's Gemini
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/RiddhiRaj/gemini.git
-   cd gemini
+   git clone https://github.com/RiddhiRaj/gemini-sdxl.git
+   cd gemini-sdxl
    ```
 
 2. Install the required dependencies:
